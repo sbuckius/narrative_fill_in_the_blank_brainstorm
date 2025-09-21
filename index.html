@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Collaborative Fill-in-the-Blanks (p5 + Firebase)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Collaborative Fill-in-the-Blanks</h1>
+      <div class="small">30 lines · 3 blanks each · Wikipedia nouns · live sync via Firebase</div>
+      <div class="controls">
+        <button id="saveBtn" class="primary">Save Text</button>
+        <button id="resetBtn">Reset All</button>
+        <span id="status" class="status" aria-live="polite"></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="outer">
+    <div id="app"></div>
+  </main>
+
+  <!-- p5.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
+  <!-- Firebase (compat for simple global usage) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+  <script>
+    // TODO: Replace with YOUR Firebase config:
+const firebaseConfig = {
+
+  apiKey: "AIzaSyDMa0-UukLC3PPEMLnahoMq0yNaa83sFu4",
+
+  authDomain: "narrativefillintheblank.firebaseapp.com",
+
+  databaseURL: "https://narrativefillintheblank-default-rtdb.firebaseio.com",
+
+  projectId: "narrativefillintheblank",
+
+  storageBucket: "narrativefillintheblank.firebasestorage.app",
+
+  messagingSenderId: "150406143382",
+
+  appId: "1:150406143382:web:4878a222ea2037cb45d1b7",
+
+  measurementId: "G-9GCPKRTDZY"
+
+};
+    window.firebaseApp = firebase.initializeApp(firebaseConfig);
+    window.db = firebase.database();
+  </script>
+
+  <!-- App code -->
+  <script src="narrative_fill_in_the_blank_changed.js"></script>
+</body>
+</html>
